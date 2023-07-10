@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlobeClock</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar navbar-outline-dark bg-outline-dark border-bottom border-secondary-subtle"
+    >
+      <div class="container-fluid mycls1">
+        <span class="navbar-brand">
+          <img src="./images/logo.png" alt="" class="logo" /> GlobeClock
+        </span>
+        <span class="d-flex">
+          <a
+            id="report-button"
+            class="btn btn-outline-dark"
+            href="mailto:mr.kumarp8304@gmail.com"
+          >
+            Report an Issue
+          </a>
+        </span>
+      </div>
+    </nav>
+    <div>
+      <div id="mainbody" class="container my-5" onload="detectTimeZone()">
+        <div class="jumbotron">
+          <h1 class="display-5 border-bottom border-black">
+            <p id="currentdnt">Currunt Date & Time In</p>
+            <span id="tzname"></span>
+            <span>Is:</span>
+            <p id="time"></p>
+          </h1>
+          <!-- <hr class="my-4" /> -->
+          <p>Change The Time Zone/Country Here</p>
+          <p class="lead border-bottom border-black pb-4">
+            <select
+              name="timezone"
+              class="form-select border border-black"
+              id="changeTimeZone"
+              aria-label="Default select example"
+            >
+              <option
+                class="optionclass"
+                name="International Date Line West"
+                value="Etc/GMT+12"
+              >
+                (GMT-12:00) International Date Line West
+              </option>
+              <option
+                class="optionclass"
+                name="Midway Island, Samoa"
+                value="Pacific/Midway"
+              >
+                (GMT-11:00) Midway Island, Samoa
+              </option>
+              <option
+                class="optionclass"
+                name="Hawaii"
+                value="Pacific/Honolulu"
+              >
+                (GMT-10:00) Hawaii
+              </option>
+              <option class="optionclass" name="Alaska" value="US/Alaska">
+                (GMT-09:00) Alaska
+              </option>
+              <option
+                class="optionclass"
+                name="Pacific Time (US & Canada)"
+                value="America/Los_Angeles"
+              >
+                (GMT-08:00) Pacific Time (US & Canada)
+              </option>
+              <option
+                class="optionclass"
+                name="Tijuana, Baja California"
+                value="America/Tijuana"
+              >
+                (GMT-08:00) Tijuana, Baja California
+              </option>
+              <option class="optionclass" name="Arizona" value="US/Arizona">
+                (GMT-07:00) Arizona
+              </option>
+              <option
+                class="optionclass"
+                name="Chihuahua, La Paz, Mazatlan"
+                value="America/Chihuahua"
+              >
+                (GMT-07:00) Chihuahua, La Paz, Mazatlan
+              </option>
+              <option
+                class="optionclass"
+                name="Mountain Time (US & Canada)"
+                value="US/Mountain"
+              >
+                (GMT-07:00) Mountain Time (US & Canada)
+              </option>
+              <option
+                class="optionclass"
+                name="Central America"
+                value="America/Managua"
+              >
+                (GMT-06:00) Central America
+              </option>
+              <option
+                class="optionclass"
+                name="Central Time (US & Canada)"
+                value="US/Central"
+              >
+                (GMT-06:00) Central Time (US & Canada)
+              </option>
+              <option
+                class="optionclass"
+                name="Guadalajara, Mexico City, Monterrey"
+                value="America/Mexico_City"
+              >
+                (GMT-06:00) Guadalajara, Mexico City, Monterrey
+              </option>
+              <option
+                class="optionclass"
+                name="Saskatchewan"
+                value="Canada/Saskatchewan"
+              >
+                (GMT-06:00) Saskatchewan
+              </option>
+              <option
+                class="optionclass"
+                name="Bogota, Lima, Quito, Rio Branco"
+                value="America/Bogota"
+              >
+                (GMT-05:00) Bogota, Lima, Quito, Rio Branco
+              </option>
+              <option
+                class="optionclass"
+                name="Eastern Time (US & Canada)"
+                value="US/Eastern"
+              >
+                (GMT-05:00) Eastern Time (US & Canada)
+              </option>
+              <option
+                class="optionclass"
+                name="Indiana (East)"
+                value="US/East-Indiana"
+              >
+                (GMT-05:00) Indiana (East)
+              </option>
+              <option
+                class="optionclass"
+                name="Atlantic Time (Canada)"
+                value="Canada/Atlantic"
+              >
+                (GMT-04:00) Atlantic Time (Canada)
+              </option>
+              <option
+                class="optionclass"
+                name="Caracas, La Paz"
+                value="America/Caracas"
+              >
+                (GMT-04:00) Caracas, La Paz
+              </option>
+              <option class="optionclass" name="Manaus" value="America/Manaus">
+                (GMT-04:00) Manaus
+              </option>
+              <option
+                class="optionclass"
+                name="Santiago"
+                value="America/Santiago"
+              >
+                (GMT-04:00) Santiago
+              </option>
+              <option
+                class="optionclass"
+                name="Newfoundland"
+                value="Canada/Newfoundland"
+              >
+                (GMT-03:30) Newfoundland
+              </option>
+              <option
+                class="optionclass"
+                name="Brasilia"
+                value="America/Sao_Paulo"
+              >
+                (GMT-03:00) Brasilia
+              </option>
+              <option
+                class="optionclass"
+                name="Buenos Aires, Georgetown"
+                value="America/Argentina/Buenos_Aires"
+              >
+                (GMT-03:00) Buenos Aires, Georgetown
+              </option>
+              <option
+                class="optionclass"
+                name="Greenland"
+                value="America/Godthab"
+              >
+                (GMT-03:00) Greenland
+              </option>
+              <option
+                class="optionclass"
+                name="Montevideo"
+                value="America/Montevideo"
+              >
+                (GMT-03:00) Montevideo
+              </option>
+              <option
+                class="optionclass"
+                name="Mid-Atlantic"
+                value="America/Noronha"
+              >
+                (GMT-02:00) Mid-Atlantic
+              </option>
+              <option
+                class="optionclass"
+                name="Cape Verde Is"
+                value="Atlantic/Cape_Verde"
+              >
+                (GMT-01:00) Cape Verde Is.
+              </option>
+              <option class="optionclass" name="Azores" value="Atlantic/Azores">
+                (GMT-01:00) Azores
+              </option>
+              <option
+                class="optionclass"
+                name="Casablanca, Monrovia, Reykjavik"
+                value="Africa/Casablanca"
+              >
+                (GMT+00:00) Casablanca, Monrovia, Reykjavik
+              </option>
+              <option
+                class="optionclass"
+                name="Greenwich Mean Time : Dublin, Edinburgh, Lisbon,
+            London"
+                value="Etc/Greenwich"
+              >
+                (GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon,
+                London
+              </option>
+              <option
+                class="optionclass"
+                name="Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
+                value="Europe/Amsterdam"
+              >
+                (GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna
+              </option>
+              <option
+                class="optionclass"
+                name="Belgrade, Bratislava, Budapest, Ljubljana, Prague"
+                value="Europe/Belgrade"
+              >
+                (GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague
+              </option>
+              <option
+                class="optionclass"
+                name="Brussels, Copenhagen, Madrid, Paris"
+                value="Europe/Brussels"
+              >
+                (GMT+01:00) Brussels, Copenhagen, Madrid, Paris
+              </option>
+              <option
+                class="optionclass"
+                name="Sarajevo, Skopje, Warsaw, Zagreb"
+                value="Europe/Sarajevo"
+              >
+                (GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb
+              </option>
+              <option
+                class="optionclass"
+                name="West Central Africa"
+                value="Africa/Lagos"
+              >
+                (GMT+01:00) West Central Africa
+              </option>
+              <option class="optionclass" name="Amman" value="Asia/Amman">
+                (GMT+02:00) Amman
+              </option>
+              <option
+                class="optionclass"
+                name="Athens, Bucharest, Istanbul"
+                value="Europe/Athens"
+              >
+                (GMT+02:00) Athens, Bucharest, Istanbul
+              </option>
+              <option class="optionclass" name="Beirut" value="Asia/Beirut">
+                (GMT+02:00) Beirut
+              </option>
+              <option class="optionclass" name="Cairo" value="Africa/Cairo">
+                (GMT+02:00) Cairo
+              </option>
+              <option
+                class="optionclass"
+                name="Harare, Pretoria"
+                value="Africa/Harare"
+              >
+                (GMT+02:00) Harare, Pretoria
+              </option>
+              <option
+                class="optionclass"
+                name="Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+                value="Europe/Helsinki"
+              >
+                (GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius
+              </option>
+              <option
+                class="optionclass"
+                name="Jerusalem"
+                value="Asia/Jerusalem"
+              >
+                (GMT+02:00) Jerusalem
+              </option>
+              <option class="optionclass" name="Minsk" value="Europe/Minsk">
+                (GMT+02:00) Minsk
+              </option>
+              <option
+                class="optionclass"
+                name="Windhoek"
+                value="Africa/Windhoek"
+              >
+                (GMT+02:00) Windhoek
+              </option>
+              <option
+                class="optionclass"
+                name="Kuwait, Riyadh, Baghdad"
+                value="Asia/Kuwait"
+              >
+                (GMT+03:00) Kuwait, Riyadh, Baghdad
+              </option>
+              <option
+                class="optionclass"
+                name="Moscow, St. Petersburg, Volgograd"
+                value="Europe/Moscow"
+              >
+                (GMT+03:00) Moscow, St. Petersburg, Volgograd
+              </option>
+              <option class="optionclass" name="Nairobi" value="Africa/Nairobi">
+                (GMT+03:00) Nairobi
+              </option>
+              <option class="optionclass" name="Tbilisi" value="Asia/Tbilisi">
+                (GMT+03:00) Tbilisi
+              </option>
+              <option class="optionclass" name="Tehran" value="Asia/Tehran">
+                (GMT+03:30) Tehran
+              </option>
+              <option
+                class="optionclass"
+                name="Abu Dhabi, Muscat"
+                value="Asia/Muscat"
+              >
+                (GMT+04:00) Abu Dhabi, Muscat
+              </option>
+              <option class="optionclass" name="Baku" value="Asia/Baku">
+                (GMT+04:00) Baku
+              </option>
+              <option class="optionclass" name="Yerevan" value="Asia/Yerevan">
+                (GMT+04:00) Yerevan
+              </option>
+              <option class="optionclass" name="Kabul" value="Asia/Kabul">
+                (GMT+04:30) Kabul
+              </option>
+              <option
+                class="optionclass"
+                name="Yekaterinburg"
+                value="Asia/Yekaterinburg"
+              >
+                (GMT+05:00) Yekaterinburg
+              </option>
+              <option
+                class="optionclass"
+                name="Islamabad, Karachi, Tashkent"
+                value="Asia/Karachi"
+              >
+                (GMT+05:00) Islamabad, Karachi, Tashkent
+              </option>
+              <option
+                class="optionclass"
+                name="Chennai, Kolkata, Mumbai, New Delhi"
+                selected
+                value="Asia/Calcutta"
+              >
+                (GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi
+              </option>
+              <option
+                class="optionclass"
+                name="Sri Jayawardenapura"
+                value="Asia/Calcutta"
+              >
+                (GMT+05:30) Sri Jayawardenapura
+              </option>
+              <option class="optionclass" name="Kathmand" value="Asia/Katmandu">
+                (GMT+05:45) Kathmandu
+              </option>
+              <option
+                class="optionclass"
+                name="Almaty, Novosibirsk"
+                value="Asia/Almaty"
+              >
+                (GMT+06:00) Almaty, Novosibirsk
+              </option>
+              <option
+                class="optionclass"
+                name="Astana, Dhaka"
+                value="Asia/Dhaka"
+              >
+                (GMT+06:00) Astana, Dhaka
+              </option>
+              <option
+                class="optionclass"
+                name="Yangon (Rangoon)"
+                value="Asia/Rangoon"
+              >
+                (GMT+06:30) Yangon (Rangoon)
+              </option>
+              <option
+                class="optionclass"
+                name="Bangkok, Hanoi, Jakarta"
+                value="Asia/Bangkok"
+              >
+                (GMT+07:00) Bangkok, Hanoi, Jakarta
+              </option>
+              <option
+                class="optionclass"
+                name="Krasnoyarsk"
+                value="Asia/Krasnoyarsk"
+              >
+                (GMT+07:00) Krasnoyarsk
+              </option>
+              <option
+                class="optionclass"
+                name="Beijing, Chongqing, Hong Kong, Urumqi"
+                value="Asia/Hong_Kong"
+              >
+                (GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi
+              </option>
+              <option
+                class="optionclass"
+                name="Kuala Lumpur, Singapore"
+                value="Asia/Kuala_Lumpur"
+              >
+                (GMT+08:00) Kuala Lumpur, Singapore
+              </option>
+              <option
+                class="optionclass"
+                name="Irkutsk, Ulaan Bataar"
+                value="Asia/Irkutsk"
+              >
+                (GMT+08:00) Irkutsk, Ulaan Bataar
+              </option>
+              <option class="optionclass" name="Perth" value="Australia/Perth">
+                (GMT+08:00) Perth
+              </option>
+              <option class="optionclass" name="Taipei" value="Asia/Taipei">
+                (GMT+08:00) Taipei
+              </option>
+              <option
+                class="optionclass"
+                name="Osaka, Sapporo, Tokyo"
+                value="Asia/Tokyo"
+              >
+                (GMT+09:00) Osaka, Sapporo, Tokyo
+              </option>
+              <option class="optionclass" name="Seoul" value="Asia/Seoul">
+                (GMT+09:00) Seoul
+              </option>
+              <option class="optionclass" name="Yakutsk" value="Asia/Yakutsk">
+                (GMT+09:00) Yakutsk
+              </option>
+              <option
+                class="optionclass"
+                name="Adelaide"
+                value="Australia/Adelaide"
+              >
+                (GMT+09:30) Adelaide
+              </option>
+              <option
+                class="optionclass"
+                name="Darwin"
+                value="Australia/Darwin"
+              >
+                (GMT+09:30) Darwin
+              </option>
+              <option
+                class="optionclass"
+                name="Brisbane"
+                value="Australia/Brisbane"
+              >
+                (GMT+10:00) Brisbane
+              </option>
+              <option
+                class="optionclass"
+                name="Canberra, Melbourne, Sydney"
+                value="Australia/Canberra"
+              >
+                (GMT+10:00) Canberra, Melbourne, Sydney
+              </option>
+              <option
+                class="optionclass"
+                name="Hobart"
+                value="Australia/Hobart"
+              >
+                (GMT+10:00) Hobart
+              </option>
+              <option
+                class="optionclass"
+                name="Guam, Port Moresby"
+                value="Pacific/Guam"
+              >
+                (GMT+10:00) Guam, Port Moresby
+              </option>
+              <option
+                class="optionclass"
+                name="Vladivostok"
+                value="Asia/Vladivostok"
+              >
+                (GMT+10:00) Vladivostok
+              </option>
+              <option
+                class="optionclass"
+                name="Magadan, Solomon Is., New Caledonia"
+                value="Asia/Magadan"
+              >
+                (GMT+11:00) Magadan, Solomon Is., New Caledonia
+              </option>
+              <option
+                class="optionclass"
+                name="Auckland, Wellington"
+                value="Pacific/Auckland"
+              >
+                (GMT+12:00) Auckland, Wellington
+              </option>
+              <option
+                class="optionclass"
+                name="Fiji, Kamchatka, Marshall Is."
+                value="Pacific/Fiji"
+              >
+                (GMT+12:00) Fiji, Kamchatka, Marshall Is.
+              </option>
+              <option
+                class="optionclass"
+                name="Nuku'alofa"
+                value="Pacific/Tongatapu"
+              >
+                (GMT+13:00) Nuku'alofa
+              </option>
+            </select>
+          </p>
+          <div class="alarmsection">
+            <p>Select Date & Time Of Alarm:</p>
+            <p action="">
+              <input type="datetime-local" id="alarmform" />
+              <button class="btn btn-outline-dark" id="alarmbtn">
+                Set Alarm
+              </button>
+              <button class="btn btn-outline-dark" id="stopalarm">
+                Stop Beeping
+              </button>
+              <span id="alarmfinal"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-bg-color">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top border-secondary-subtle"
+      >
+        <div class="px-5 col-12 d-flex align-items-center">
+          <span class="col-12 mb-3 mb-md-0 text-body-secondary footer-text">
+            <img
+              style="width: 2rem"
+              id="logoimgfooter"
+              src="./images/logo.png"
+              alt=""
+            />
+            GlobeClock/ © 2023 —
+            <a
+              href="https://pawan2611.github.io/Pawan-Kumar/"
+              id="link-to-portfolio"
+              rel="noopener noreferrer"
+              target="_blank"
+              >@pawankumar</a
+            ></span
+          >
+        </div>
+      </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/clock.js"></script>
+  </body>
+</html>

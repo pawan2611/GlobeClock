@@ -1,0 +1,61 @@
+body,
+select,
+p,
+span,
+.mycls1 a,
+option,
+.alarmbtn,
+.alarmform {
+  font-family: "Josefin Sans", sans-serif;
+  color: black !important;
+  font-weight: 800 !important;
+}
+.logo {
+  width: 2.5rem;
+}
+#alarmbtn,
+#stopalarm {
+  padding: 0.1% 1%;
+}
+#mainbody::before {
+  background: url(../images/worldmapbg.jpg), center center/cover no-repeat;
+  opacity: 0.1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+}
+#link-to-portfolio {
+  text-decoration: underline;
+  color: black;
+}
+.footer-text {
+  text-align: center;
+  color: black !important;
+}
+@media (max-width: 768px) {
+  .alarmsection p,
+  .alarmsection input,
+  .alarmsection button,
+  .alarmsection span {
+    display: block;
+    margin: 2% 0%;
+  }
+}
+@media (max-width: 992px) and (max-width: 992px) {
+  .alarmsection p,
+  .alarmsection input,
+  .alarmsection span {
+    display: block;
+    margin: 2% 0%;
+  }
+}
