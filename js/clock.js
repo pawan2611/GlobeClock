@@ -271,7 +271,7 @@ function alarm(currentTime) {
 
   if (currentTime == formattedDatetime) {
     document.getElementById('alarmfinal').innerHTML = '';
-    alarmSound = new Audio('../sound/alarm.mp3');
+    alarmSound = new Audio('./sound/alarm.mp3');
     alarmSound.play();
   }
 }
